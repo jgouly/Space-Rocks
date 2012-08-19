@@ -41,12 +41,17 @@ class Rock(GameObject):
         self.rotate(self.rotation_speed)
         self.sprite.draw()
         if(self.is_out_of_bounds()):
-          self.position = Vector(400, 300)
-    
+          self.random_position_around_perimiter()
+
     def set_position_with_acceleration(self):
         self.position += self.acceleration
         self.sprite.set_position(self.position.x, self.position.y)
 
     def rotate(self, angle):
         self.sprite.rotation += angle
+
+    def random_position_around_perimiter(self):
+        x = random.randint(0,1)
+        y = random.randint(0,1)
+        self.position = Vector(x*800, y*600)
         
